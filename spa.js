@@ -7,6 +7,9 @@ app.config(function($routeProvider) {
     }).when('/data', {
         templateUrl: 'data.html',
         controller: 'SecondController'
+    }).when('/reg', {
+        templateUrl: 'reg.html',
+        controller: 'ThirdController'
     }).otherwise({
         redirectTo: '/'
     });
