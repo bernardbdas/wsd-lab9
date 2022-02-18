@@ -4,18 +4,13 @@ app.config(function($routeProvider) {
     $routeProvider
 
         .when('/', {
-        templateUrl: 'aboutus.html',
+        templateUrl: 'about.html',
         controller: 'FirstController'
     })
 
     .when('/manipulate', {
-        templateUrl: 'manipulate.html',
+        templateUrl: 'data.html',
         controller: 'SecondController'
-    })
-
-    .when('/traindata', {
-        templateUrl: 'traindata.html',
-        controller: 'ThirdController'
     })
 
     .otherwise({

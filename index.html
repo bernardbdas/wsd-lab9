@@ -19,8 +19,8 @@
 <body>
     <style>
         a {
-            color: white;
-            background-color: black;
+            color: rgb(255, 111, 111);
+            background-color: rgb(115, 18, 134);
             font-size: 30px;
         }
         
@@ -31,7 +31,7 @@
 
     <!--first controller-->
     <div class="row">
-        <script type="text/ng-template" id="aboutus.html">
+        <script type="text/ng-template" id="about.html">
             <br>
             <h1 style="color:red;text-align:center">Community Discussion Platform for Lawyers</h1>
             <br>
@@ -41,12 +41,10 @@
     </div>
 
     <!--second controller-->
-    <script type="text/ng-template" id="manipulate.html">
-        <div style="text-align: center;font-family: timesnewroman;font-size: 40px">RAILWAY EMPLOYEE DETAILS</div>
+    <script type="text/ng-template" id="data.html">
+        <div style="text-align: center;font-family: timesnewroman;font-size: 40px">CDPL User Database</div>
         <div class="row">
-
             <table class="table table-striped" cellpadding="2" cellspacing="2" borders="1">
-
                 <thead class="thead-light">
                     <tr>
                         <th scope="col" ng-click="sortCols('cid')">User Id <br />
@@ -88,86 +86,14 @@
     </script>
     </div>
 
-    <!--third controller-->
-    <script type="text/ng-template" id="traindata.html">
-        <div style="text-align: center;font-family: timesnewroman;font-size: 40px">CDPL User Database</div>
-        <div class="row form-group" style="text-align: center">
-            <div class="col-4"></div>
-            <div class="col-4">Search<br><input class="form-control" type="text" placeholder="Search " ng-model="find"></div>
-            <div class="col-4"></div>
-        </div>
 
-        <div class="row form-group">
-            <div class="col-5"></div>
-            <div class="col-2" style="text-align: center">STATUS:{1-busy/0-free}<input class="form-control" class="input" type="number" min="0" max="1" ng-model="search.status"></div>
-            <div class="col-5"></div>
-        </div>
-
-        <div class="row">
-            <table class="table table-striped">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">
-                            <div>
-                                ROWS :<br><input type="number" ng-model="rowlimit">
-
-                            </div>
-                        </th>
-                        <th scope="col" ng-click="sortCols('cid')">User Id <br />
-                            <input type="text" ng-model="search.cid" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('name')">Name <br />
-                            <input type="text" ng-model="search.name" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('age')">Age <br />
-                            <input type="text" ng-model="search.age" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('nationality')">Nationality <br />
-                            <input type="text" ng-model="search.nationality" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('designation')">Designation <br />
-                            <input type="text" ng-model="search.designation" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('email')">Email <br />
-                            <input type="text" ng-model="search.email" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('contact')">Contact <br />
-                            <input type="text" ng-model="search.contact" />
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-        </div>
-        <tr ng-repeat="item in names|filter:search|filter:find |filter:find2 |limitTo:rowlimit | orderBy:'-price'">
-            <td></td>
-            <td>{{item.name|uppercase}}</td>
-            <td>{{item.doj|date:"dd/MM/yyyy"}}</td>
-            <td>{{item.exp}}</td>
-            <td>&#x20B9; {{item.price|number:0}}</td>
-            <td>{{item.location|lowercase}}</td>
-            <td>{{item.type}}</td>
-            <td>&#x260E; {{item.contact}}</td>
-        </tr>
-        </tr>
-
-        </tbody>
-        </table>
-    </script>
-    </div>
-
-
-    <!--hyperlinks to load different
-			pages dynamically-->
-    <div class="row" style="text-align: center;font: 30px;color: white; background-color: black;">
+    <!--hyperlinks to load different pages dynamically-->
+    <div class="row" style="text-align: center;font: 30px;color: rgb(255, 108, 108); background-color: rgb(115, 18, 134);">
         <div class="col-4">
-            <a href="#/">ABOUT US</a>
+            <a href="#/about">About Us</a>
         </div>
         <div class="col-4">
-            <a href="#/manipulate">TRAIN DATA</a>
-
-        </div>
-        <div class="col-4">
-            <a href="#/traindata">TRAIN INFO</a>
+            <a href="#/data">User Details</a>
         </div>
     </div>
 
