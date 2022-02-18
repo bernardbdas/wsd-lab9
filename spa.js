@@ -31,14 +31,14 @@ app.controller('FirstController', function($scope) {
 
 
 app.controller('SecondController', function($scope, $http) {
-    $http.get('https://adhokshaja73.github.io/spa.github.io/train.json')
+    $http.get('https://bernardbdas.github.io/wsd-lab9/users.json')
         .success(function(response) {
             $scope.names = response.trainemp;
         });
 });
 
 app.controller('ThirdController', function($scope, $http) {
-    $http.get('https://adhokshaja73.github.io/spa.github.io/train.json')
+    $http.get('https://bernardbdas.github.io/wsd-lab9/users.json')
         .success(function(response) {
             $scope.names = response.trainemp;
             $scope.rowlimit = 6;

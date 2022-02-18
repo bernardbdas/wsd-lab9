@@ -28,6 +28,8 @@
             background: cover;
         }
     </style>
+
+    <!--first controller-->
     <div class="row">
         <script type="text/ng-template" id="aboutus.html">
             <br>
@@ -36,104 +38,124 @@
             <h1 style="text-align:center">ABOUT US</h1>
             <p class="responsive" style="font:25px timesnewroman;text-align:center"><br>{{message}}</p>
         </script>
+    </div>
 
-        <!--second controller-->
-        <script type="text/ng-template" id="manipulate.html"></script>
+    <!--second controller-->
+    <script type="text/ng-template" id="manipulate.html">
         <div style="text-align: center;font-family: timesnewroman;font-size: 40px">RAILWAY EMPLOYEE DETAILS</div>
         <div class="row">
-            <table class="table table-striped">
+
+            <table class="table table-striped" cellpadding="2" cellspacing="2" borders="1">
+
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col"> </th>
-                        <th scope="col">Name<br> </th>
-                        <th scope="col">Date OF joining<br> </th>
-                        <th scope="col">Experience in Years<br> </th>
-                        <th scope="col">Salary<br> </th>
-                        <th scope="col">Work Location<br> </th>
-                        <th scope="col">Type<br> </th>
-                        <th scope="col">Contact No<br> </th>
+                        <th scope="col" ng-click="sortCols('cid')">User Id <br />
+                            <input type="text" ng-model="search.cid" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('name')">Name <br />
+                            <input type="text" ng-model="search.name" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('age')">Age <br />
+                            <input type="text" ng-model="search.age" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('nationality')">Nationality <br />
+                            <input type="text" ng-model="search.nationality" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('designation')">Designation <br />
+                            <input type="text" ng-model="search.designation" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('email')">Email <br />
+                            <input type="text" ng-model="search.email" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('contact')">Contact <br />
+                            <input type="text" ng-model="search.contact" />
+                        </th>
                     </tr>
                 </thead>
         </div>
         <tbody>
-            <tr ng-repeat="item in names">
-                <td></td>
-                <td>{{item.name|uppercase}}</td>
-                <td>{{item.doj|date:"dd/MM/yyyy"}}</td>
-                <td>{{item.exp}}</td>
-                <td>&#x20B9; {{item.price|number:0}}</td>
-                <td>{{item.location|lowercase}}</td>
-                <td>{{item.type}}</td>
-                <td>&#x260E; {{item.contact}}</td>
+            <tr ng-repeat="item in myData | limitTo:rowlimit | filter:search | orderBy:sortCols |  filter:searchKey | filter:searchId">
+                <td>{{item.cid}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.nationality}}</td>
+                <td>{{item.designation}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.contact}}</td>
             </tr>
         </tbody>
         </table>
-
-        <!--third controller-->
-        <script type="text/ng-template" id="traindata.html">
-            <div style="text-align: center;font-family: timesnewroman;font-size: 40px">CDPL User Database</div>
-            <div class="row form-group" style="text-align: center">
-                <div class="col-4"></div>
-                <div class="col-4">Search<br><input class="form-control" type="text" placeholder="Search " ng-model="find"></div>
-                <div class="col-4"></div>
-            </div>
-            <div class="row form-group">
-                <div class="col-5"></div>
-                <div class="col-2" style="text-align: center">STATUS:{1-busy/0-free}<input class="form-control" class="input" type="number" min="0" max="1" ng-model="search.status"></div>
-                <div class="col-5"></div>
-            </div>
-            <div class="row">
-                <table class="table table-striped">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">
-                                <div>
-                                    ROWS :<br><input type="number" ng-model="rowlimit">
-
-                                </div>
-                            </th>
-                            <th scope="col">Name<br>
-                                <input type="text" ng-model="search.name">
-                            </th>
-                            <th scope="col">Date OF joining<br>
-                                <input type="text" ng-model="search.doj">
-                            </th>
-                            <th scope="col">Experience in Years<br>
-                                <input type="text" ng-model="search.exp">
-                            </th>
-                            <th scope="col">Salary<br>
-                                <input type="text" ng-model="search.price">
-                            </th>
-                            <th scope="col">Work Location<br>
-                                <input type="text" ng-model="search.location">
-                            </th>
-                            <th scope="col">Type<br>
-                                <input type="text" ng-model="search.type">
-                            </th>
-                            <th scope="col">Contact No<br>
-                                <input type="text" ng-model="find2.contact">
-                            </th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-            </div>
-            <tr ng-repeat="item in names|filter:search|filter:find |filter:find2 |limitTo:rowlimit | orderBy:'-price'">
-                <td></td>
-                <td>{{item.name|uppercase}}</td>
-                <td>{{item.doj|date:"dd/MM/yyyy"}}</td>
-                <td>{{item.exp}}</td>
-                <td>&#x20B9; {{item.price|number:0}}</td>
-                <td>{{item.location|lowercase}}</td>
-                <td>{{item.type}}</td>
-                <td>&#x260E; {{item.contact}}</td>
-            </tr>
-            </tr>
-
-            </tbody>
-            </table>
-        </script>
+    </script>
     </div>
+
+    <!--third controller-->
+    <script type="text/ng-template" id="traindata.html">
+        <div style="text-align: center;font-family: timesnewroman;font-size: 40px">CDPL User Database</div>
+        <div class="row form-group" style="text-align: center">
+            <div class="col-4"></div>
+            <div class="col-4">Search<br><input class="form-control" type="text" placeholder="Search " ng-model="find"></div>
+            <div class="col-4"></div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-5"></div>
+            <div class="col-2" style="text-align: center">STATUS:{1-busy/0-free}<input class="form-control" class="input" type="number" min="0" max="1" ng-model="search.status"></div>
+            <div class="col-5"></div>
+        </div>
+
+        <div class="row">
+            <table class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">
+                            <div>
+                                ROWS :<br><input type="number" ng-model="rowlimit">
+
+                            </div>
+                        </th>
+                        <th scope="col" ng-click="sortCols('cid')">User Id <br />
+                            <input type="text" ng-model="search.cid" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('name')">Name <br />
+                            <input type="text" ng-model="search.name" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('age')">Age <br />
+                            <input type="text" ng-model="search.age" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('nationality')">Nationality <br />
+                            <input type="text" ng-model="search.nationality" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('designation')">Designation <br />
+                            <input type="text" ng-model="search.designation" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('email')">Email <br />
+                            <input type="text" ng-model="search.email" />
+                        </th>
+                        <th scope="col" ng-click="sortCols('contact')">Contact <br />
+                            <input type="text" ng-model="search.contact" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+        </div>
+        <tr ng-repeat="item in names|filter:search|filter:find |filter:find2 |limitTo:rowlimit | orderBy:'-price'">
+            <td></td>
+            <td>{{item.name|uppercase}}</td>
+            <td>{{item.doj|date:"dd/MM/yyyy"}}</td>
+            <td>{{item.exp}}</td>
+            <td>&#x20B9; {{item.price|number:0}}</td>
+            <td>{{item.location|lowercase}}</td>
+            <td>{{item.type}}</td>
+            <td>&#x260E; {{item.contact}}</td>
+        </tr>
+        </tr>
+
+        </tbody>
+        </table>
+    </script>
+    </div>
+
+
     <!--hyperlinks to load different
 			pages dynamically-->
     <div class="row" style="text-align: center;font: 30px;color: white; background-color: black;">
@@ -150,7 +172,7 @@
     </div>
 
     <div ng-view></div>
-    <script type="text/javascript" src="train.js"></script>
+    <script type="text/javascript" src="spa.js"></script>
 </body>
 
 </html>
