@@ -1,114 +1,156 @@
 <!DOCTYPE html>
-<html ng-app="myapp" ng-controller="myctrl">
+<!--ng-app directive tells AngularJS that myApp	is the root element of the application -->
+<html ng-app="myApp">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEAMFIVE</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
-    <script src="spa.js"></script>
-    <link href="style.css" rel="stylesheet" />
+    <!--import the angularjs libraries-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js">
+    </script>
 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
-<style>
-    * {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        /* box-sizing: border-box;  */
-    }
-    
-    header {
-        margin-top: -10px;
-        width: 100%;
-        height: 70px;
-        display: flex;
-        background-color: black;
-        opacity: 0.9;
-        z-index: 5;
-        justify-content: space-between;
-        position: fixed;
-        margin-left: -10px;
-    }
-    
-    a {
-        /* width: 260px; */
-        font-size: medium;
-        border-radius: 5px;
-        box-sizing: border-box;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom: 1px solid #ccc;
-        background-color: black;
-        color: white;
-        padding: 10px;
-        text-decoration: none;
-    }
-    
-    hr {
-        width: 400px;
-        margin-left: 350px;
-    }
-    
-    table {
-        border: none;
-        padding: 0px;
-        border-collapse: collapse;
-        transform: translate(25px, 50px);
-        /* border: 1px solid #62cb6b; */
-    }
-    
-    td,
-    th {
-        border: none;
-        border-collapse: collapse;
-        padding: 10px;
-        width: 1000px;
-    }
-    
-    th {
-        background-color: #62cb6b;
-    }
-    
-    input {
-        width: 150px;
-        font-size: medium;
-        border-radius: 5px;
-        box-sizing: border-box;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom: 1px solid #ccc;
-        background-color: black;
-        color: white;
-        padding: 10px;
-    }
-</style>
 
 <body>
-    <header>
-        <a id="logo" href="#/home" title="Home" style="padding: 25px; font-size: 20px;        
-           color: white;
-           text-decoration: none;
-           cursor: pointer;">TEAM<span style="color: #62cb6b;">FIVE</span></a>
-    </header>
-    <br><br><br>
-    <table style="font-family: Arial">
-        <tr>
-            <td class="leftMenu">
-                <a href="#/home" title="Home">Home</a>
-                <a href="#/House" title="House Details">House Details</a>
-                <a href="#/course" title="OrderByPrice">OrderByPrice</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="mainContent">
-                <ng-view></ng-view>
-            </td>
-        </tr>
-    </table>
+    <style>
+        a {
+            color: white;
+            background-color: black;
+            font-size: 30px;
+        }
+        
+        img {
+            background: cover;
+        }
+    </style>
+    <div class="row">
+        <script type="text/ng-template" id="aboutus.html">
+            <br>
+            <h1 style="color:red;text-align:center">Community Discussion Platform for Lawyers</h1>
+            <br>
+            <h1 style="text-align:center">ABOUT US</h1>
+            <p class="responsive" style="font:25px timesnewroman;text-align:center"><br>{{message}}</p>
+        </script>
 
+        <!--second controller-->
+        <script type="text/ng-template" id="manipulate.html"></script>
+        <div style="text-align: center;font-family: timesnewroman;font-size: 40px">RAILWAY EMPLOYEE DETAILS</div>
+        <div class="row">
+            <table class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col"> </th>
+                        <th scope="col">Name<br> </th>
+                        <th scope="col">Date OF joining<br> </th>
+                        <th scope="col">Experience in Years<br> </th>
+                        <th scope="col">Salary<br> </th>
+                        <th scope="col">Work Location<br> </th>
+                        <th scope="col">Type<br> </th>
+                        <th scope="col">Contact No<br> </th>
+                    </tr>
+                </thead>
+        </div>
+        <tbody>
+            <tr ng-repeat="item in names">
+                <td></td>
+                <td>{{item.name|uppercase}}</td>
+                <td>{{item.doj|date:"dd/MM/yyyy"}}</td>
+                <td>{{item.exp}}</td>
+                <td>&#x20B9; {{item.price|number:0}}</td>
+                <td>{{item.location|lowercase}}</td>
+                <td>{{item.type}}</td>
+                <td>&#x260E; {{item.contact}}</td>
+            </tr>
+        </tbody>
+        </table>
+
+        <!--third controller-->
+        <script type="text/ng-template" id="traindata.html">
+            <div style="text-align: center;font-family: timesnewroman;font-size: 40px">CDPL User Database</div>
+            <div class="row form-group" style="text-align: center">
+                <div class="col-4"></div>
+                <div class="col-4">Search<br><input class="form-control" type="text" placeholder="Search " ng-model="find"></div>
+                <div class="col-4"></div>
+            </div>
+            <div class="row form-group">
+                <div class="col-5"></div>
+                <div class="col-2" style="text-align: center">STATUS:{1-busy/0-free}<input class="form-control" class="input" type="number" min="0" max="1" ng-model="search.status"></div>
+                <div class="col-5"></div>
+            </div>
+            <div class="row">
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">
+                                <div>
+                                    ROWS :<br><input type="number" ng-model="rowlimit">
+
+                                </div>
+                            </th>
+                            <th scope="col">Name<br>
+                                <input type="text" ng-model="search.name">
+                            </th>
+                            <th scope="col">Date OF joining<br>
+                                <input type="text" ng-model="search.doj">
+                            </th>
+                            <th scope="col">Experience in Years<br>
+                                <input type="text" ng-model="search.exp">
+                            </th>
+                            <th scope="col">Salary<br>
+                                <input type="text" ng-model="search.price">
+                            </th>
+                            <th scope="col">Work Location<br>
+                                <input type="text" ng-model="search.location">
+                            </th>
+                            <th scope="col">Type<br>
+                                <input type="text" ng-model="search.type">
+                            </th>
+                            <th scope="col">Contact No<br>
+                                <input type="text" ng-model="find2.contact">
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+            </div>
+            <tr ng-repeat="item in names|filter:search|filter:find |filter:find2 |limitTo:rowlimit | orderBy:'-price'">
+                <td></td>
+                <td>{{item.name|uppercase}}</td>
+                <td>{{item.doj|date:"dd/MM/yyyy"}}</td>
+                <td>{{item.exp}}</td>
+                <td>&#x20B9; {{item.price|number:0}}</td>
+                <td>{{item.location|lowercase}}</td>
+                <td>{{item.type}}</td>
+                <td>&#x260E; {{item.contact}}</td>
+            </tr>
+            </tr>
+
+            </tbody>
+            </table>
+        </script>
+    </div>
+    <!--hyperlinks to load different
+			pages dynamically-->
+    <div class="row" style="text-align: center;font: 30px;color: white; background-color: black;">
+        <div class="col-4">
+            <a href="#/">ABOUT US</a>
+        </div>
+        <div class="col-4">
+            <a href="#/manipulate">TRAIN DATA</a>
+
+        </div>
+        <div class="col-4">
+            <a href="#/traindata">TRAIN INFO</a>
+        </div>
+    </div>
+
+    <div ng-view></div>
+    <script type="text/javascript" src="train.js"></script>
 </body>
 
 </html>

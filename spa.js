@@ -1,87 +1,46 @@
-angular.module('myapp',['ngRoute'])
-.config(function($routeProvider)
-{
-    $routeProvider.when('/home',
-    {
-        templateUrl:'christ/home.html',
-        controller:'homectrl'}).when('/home/:first/:last',
-        {
-            templateUrl:'christ/home.html',
-            controller:'homectrl'
-    }).when('/course',
-    {
-        templateUrl:'christ/course.html',
-        controller:'coursectrl'
-    }).when('/House',
-    {
-        templateUrl:'christ/House.html',
-        controller:'studentctrl'
+var app = angular.module('myApp', [], ['ui.bootstrap']);
+var app = angular.module('myApp', ['ngRoute']);
+app.config(function($routeProvider) {
+    $routeProvider
+
+        .when('/', {
+        templateUrl: 'aboutus.html',
+        controller: 'FirstController'
     })
-})
-.controller('myctrl',function()
-{
 
-})
-.controller("homectrl",function($scope,$routeParams)
-{
-    $scope.message="Sweet Home"
-    if($routeParams.first&&$routeParams.last)
-    {
-        $scope.person={
-            first:$routeParams.first,
-            last:$routeParams.last
-        };
-    }
-})
-.controller("coursectrl",function($scope,$http)
-{
-    // $http.get('houseinfo.json')
-    // .success(function(response)
-    // {
-    //     $scope.houseinformation=response.record;
-    // });
-    $http.get('https://raw.githubusercontent.com/MeghanaM2/Agular-/main/house.json')
-    .success(function(response)
-    {
-        $scope.houseinformation=response.houseInformation; 
+    .when('/manipulate', {
+        templateUrl: 'manipulate.html',
+        controller: 'SecondController'
+    })
+
+    .when('/traindata', {
+        templateUrl: 'traindata.html',
+        controller: 'ThirdController'
+    })
+
+    .otherwise({
+        redirectTo: '/'
     });
-
-})
-
-
-.controller("studentctrl",function($scope,$http)
-{
-    // $http.get('houseinfo.json')
-    // .success(function(response)
-    // {
-    //     $scope.houseinformation=response.record;
-    // });
-    $http.get('https://raw.githubusercontent.com/MeghanaM2/Agular-/main/house.json')
-    .success(function(response)
-    {
-        $scope.houseinformation=response.houseInformation; 
-    });
-})
-// .controller.filter("myfilter",function($scope)
-// {
-//     return function(input)
-//     {
-//        return input.substring(0,1).toUpperCase()+input.substring(1,undefined).toLowerCase();
-//     }
-// })
-// .controller.filter("filtercity",function(){
-
-//     return function(input)
-//     {    
-//     input = input.split(',');
-//     for (var i = 0; i < input.length; i++) {
-//     input[i] = input[i].charAt(0).toUpperCase() + input[i].slice(1);
-//     }
-//    input = input.join(" ");
-//    return(input);
-// }
-
-// });
+});
 
 
+app.controller('FirstController', function($scope) {
+    $scope.message = ' Train identification information is also collected from each of the train origination stations. The TMS system processes all this information and provides an integrated real-time display and status indications of train positions and movements as well as signals and route interlocking status. TMS management functions use this integrated data to decide on induction and withdrawal of rakes, diversion of trains, planning reversal of rakes, and so on. Control information from TMS is fed to route relay interlocking at several locations to allow remote activation of points and signals and set routes for trains. ';
 
+});
+
+
+app.controller('SecondController', function($scope, $http) {
+    $http.get('https://adhokshaja73.github.io/spa.github.io/train.json')
+        .success(function(response) {
+            $scope.names = response.trainemp;
+        });
+});
+
+app.controller('ThirdController', function($scope, $http) {
+    $http.get('https://adhokshaja73.github.io/spa.github.io/train.json')
+        .success(function(response) {
+            $scope.names = response.trainemp;
+            $scope.rowlimit = 6;
+        });
+});

@@ -1,0 +1,93 @@
+{
+    "users": [{
+            "cid": "C01",
+            "name": "Rakesh",
+            "age": "23",
+            "nationality": "Portugal",
+            "designation": "Law Enthusiast",
+            "email": "rakesh@cdpl.com",
+            "contact": "9832743245"
+        },
+        {
+            "cid": "C02",
+            "name": "Ujjwal",
+            "age": "34",
+            "nationality": "United States",
+            "designation": "Research Scholar",
+            "email": "ujjwal@cdpl.com",
+            "contact": "3289903449"
+        },
+        {
+            "cid": "C03",
+            "name": "Meghana",
+            "age": "17",
+            "nationality": "Ghana",
+            "designation": "Law Enthusiast",
+            "email": "meghana@cdpl.com",
+            "contact": "0923762856"
+        },
+        {
+            "cid": "C04",
+            "name": "Lisa",
+            "age": "45",
+            "nationality": "Singapore",
+            "designation": "Law Enthusiast",
+            "email": "lisa@cdpl.com",
+            "contact": "7835345344"
+        },
+        {
+            "cid": "C05",
+            "name": "Sonu",
+            "age": "53",
+            "nationality": "Japan",
+            "designation": "Lawyer",
+            "email": "sonu@cdpl.com",
+            "contact": "4764937484"
+        },
+        {
+            "cid": "C06",
+            "name": "Priya",
+            "age": "65",
+            "nationality": "Finland",
+            "designation": "Barrister",
+            "email": "priya@cdpl.com",
+            "contact": "3480273846"
+        },
+        {
+            "cid": "C07",
+            "name": "Ajay",
+            "age": "34",
+            "nationality": "France",
+            "designation": "Law Enthusiast",
+            "email": "ajay@cdpl.com",
+            "contact": "3749309489"
+        },
+        {
+            "cid": "C08",
+            "name": "Rohan",
+            "age": "32",
+            "nationality": "Australia",
+            "designation": "Research Scholar",
+            "email": "rohan@cdpl.com",
+            "contact": "4674985349"
+        },
+        {
+            "cid": "C09",
+            "name": "Ankit",
+            "age": "39",
+            "nationality": "Denmark",
+            "designation": "Research Scholar",
+            "email": "ankit@cdpl.com",
+            "contact": "4578203847"
+        },
+        {
+            "cid": "C10",
+            "name": "Yash",
+            "age": "44",
+            "nationality": "India",
+            "designation": "Lawyer",
+            "email": "yash@cdpl.com",
+            "contact": "3647839039"
+        }
+    ]
+}
