@@ -11,6 +11,7 @@
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="style1.css" rel="stylesheet">
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -19,8 +20,8 @@
 <body>
     <style>
         a {
-            color: rgb(255, 111, 111);
-            background-color: rgb(115, 18, 134);
+            color: rgb(255, 255, 255);
+            background-color: rgb(27, 9, 31);
             font-size: 30px;
         }
         
@@ -33,64 +34,69 @@
     <div class="row">
         <script type="text/ng-template" id="about.html">
             <br>
-            <h1 style="color:red;text-align:center">Community Discussion Platform for Lawyers</h1>
+            <h1 style="color:black;text-align:center">Community Discussion Platform for Lawyers</h1>
             <br>
             <h1 style="text-align:center">ABOUT US</h1>
-            <p class="responsive" style="font:25px timesnewroman;text-align:center"><br>{{message}}</p>
+            <p class="responsive" style="font:25px Montserrat;text-align:center"><br>{{message}}</p>
         </script>
     </div>
 
     <!--second controller-->
     <script type="text/ng-template" id="data.html">
-        <div style="text-align: center;font-family: timesnewroman;font-size: 40px">CDPL User Database</div>
-        <div class="row">
-            <table class="table table-striped" cellpadding="2" cellspacing="2" borders="1">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col" ng-click="sortCols('cid')">User Id <br />
-                            <input type="text" ng-model="search.cid" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('name')">Name <br />
-                            <input type="text" ng-model="search.name" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('age')">Age <br />
-                            <input type="text" ng-model="search.age" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('nationality')">Nationality <br />
-                            <input type="text" ng-model="search.nationality" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('designation')">Designation <br />
-                            <input type="text" ng-model="search.designation" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('email')">Email <br />
-                            <input type="text" ng-model="search.email" />
-                        </th>
-                        <th scope="col" ng-click="sortCols('contact')">Contact <br />
-                            <input type="text" ng-model="search.contact" />
-                        </th>
-                    </tr>
-                </thead>
-        </div>
-        <tbody>
-            <tr ng-repeat="item in myData | limitTo:rowlimit | filter:search | orderBy:sortCols |  filter:searchKey | filter:searchId">
-                <td>{{item.cid}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.age}}</td>
-                <td>{{item.nationality}}</td>
-                <td>{{item.designation}}</td>
-                <td>{{item.email}}</td>
-                <td>{{item.contact}}</td>
-            </tr>
-        </tbody>
-        </table>
-    </script>
-    </div>
+        <h2 class="header">Search User Database</h2>
+        <div class="conatiner" ng-controller="myCtrl">
+            <label>Rows to Display :</label> <br /> <input class="filter" type="number" step="1" min="0" max="10" ng-model="rowlimit" placeholder="Number of rows to be displayed" />
+            <br /> <br /><label> Enter Keyword : </label><br /> <input class="filter" type="text" placeholder="Search by keyword" ng-model="searchKey" />
+            <button class="ord-btn">Order By Name</button>
+            <button class="ord-btn">Order By Age</button>
+            <!-- <br /> <br /><label> Enter User ID : </label><br /> <input class="filter" type="text" placeholder="Search by user ID" ng-model="searchId" /> -->
+            <br />
+            <br />
+            <h2 class="header">CDPL : User Database</h2>
+            <table cellpadding="2" cellspacing="2" borders="1">
+                <tr>
+                    <th scope="col" ng-click="sortCols('cid')">User Id <br />
+                        <input type="text" ng-model="search.cid" />
+                    </th>
+                    <th scope="col" ng-click="sortCols('name')">Name <br />
+                        <input type="text" ng-model="search.name" />
+                    </th>
+                    <th scope="col" ng-click="sortCols('age')">Age <br />
+                        <input type="text" ng-model="search.age" />
+                    </th>
+                    <th scope="col" ng-click="sortCols('nationality')">Nationality <br />
+                        <input type="text" ng-model="search.nationality" />
+                    </th>
+                    <th scope="col" ng-click="sortCols('designation')">Designation <br />
+                        <input type="text" ng-model="search.designation" />
+                    </th>
+                    <th scope="col" ng-click="sortCols('email')">Email <br />
+                        <input type="text" ng-model="search.email" />
+                    </th>
+                    <th scope="col" ng-click="sortCols('contact')">Contact <br />
+                        <input type="text" ng-model="search.contact" />
+                    </th>
+                </tr>
 
+                <tbody>
+                    <tr ng-repeat="item in myData | limitTo:rowlimit | filter:search | orderBy:sortCols |  filter:searchKey | filter:searchId">
+                        <td>{{item.cid}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.age}}</td>
+                        <td>{{item.nationality}}</td>
+                        <td>{{item.designation}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.contact}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
 
     <!--hyperlinks to load different pages dynamically-->
-    <div class="row" style="text-align: center;font: 30px;color: rgb(255, 108, 108); background-color: rgb(115, 18, 134);">
+    <div class="row" style="text-align: center;font: 30px;color: rgb(255, 108, 108); background-color: rgb(27, 9, 31);">
         <div class="col-4">
-            <a href="#/about">About Us</a>
+            <a href="#/">About Us</a>
         </div>
         <div class="col-4">
             <a href="#/data">User Details</a>
